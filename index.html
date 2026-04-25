@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adham Amgad | SCADA Dashboard</title>
+<title>Adham Amgad | Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -13,96 +13,68 @@
 body{
   font-family:'Poppins',sans-serif;
   background:#020617;
-  color:#e5e7eb;
+  color:#e2e8f0;
 }
 
-/* HEADER */
+/* subtle industrial background */
+body::before{
+  content:"";
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(56,189,248,0.08), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(59,130,246,0.08), transparent 40%);
+  z-index:-1;
+}
+
+/* header */
 header{
-  padding:20px;
-  border-bottom:1px solid #1f2937;
+  height:90vh;
   display:flex;
-  justify-content:space-between;
+  flex-direction:column;
+  justify-content:center;
   align-items:center;
+  text-align:center;
 }
 
-header h1{
-  font-size:1.2rem;
-  color:#38bdf8;
-}
-
-.status{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-
-.dot{
-  width:10px;
-  height:10px;
+header img{
+  width:150px;
+  height:150px;
   border-radius:50%;
-  background:#22c55e;
-  box-shadow:0 0 8px #22c55e;
+  border:3px solid #38bdf8;
+  margin-bottom:15px;
 }
 
-/* GRID LAYOUT */
-.dashboard{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:15px;
-  padding:20px;
+h1{font-size:2.5rem;}
+p{opacity:0.7;margin-top:10px;}
+
+section{
+  max-width:900px;
+  margin:auto;
+  padding:50px 20px;
 }
 
-/* PANEL */
-.panel{
-  background:#0f172a;
-  border:1px solid #1e293b;
-  border-radius:10px;
-  padding:15px;
-}
-
-.panel h2{
-  font-size:1rem;
-  margin-bottom:10px;
+h2{
   color:#38bdf8;
+  margin-bottom:15px;
 }
 
-/* KPI BOXES */
-.kpi{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:#020617;
+.card{
+  background:#0f172a;
+  padding:15px;
+  border-radius:10px;
   border:1px solid #1e293b;
-  padding:10px;
-  border-radius:8px;
-  margin-bottom:10px;
+  margin-bottom:15px;
 }
 
-.kpi span{
-  font-size:0.8rem;
-  opacity:0.7;
+.card:hover{
+  border-color:#38bdf8;
 }
 
-.kpi strong{
-  color:#22c55e;
-}
-
-/* LIST */
-ul{
-  padding-left:15px;
-  font-size:0.9rem;
-}
-
-li{
-  margin-bottom:5px;
-}
-
-/* FOOTER */
 footer{
   text-align:center;
-  padding:15px;
-  border-top:1px solid #1f2937;
-  font-size:0.8rem;
+  padding:20px;
   opacity:0.6;
 }
 </style>
@@ -111,86 +83,23 @@ footer{
 <body>
 
 <header>
-  <h1>Adham Amgad | Automation System</h1>
-  <div class="status">
-    <div class="dot"></div>
-    <span>System Online</span>
-  </div>
+  <img src="https://via.placeholder.com/150">
+  <h1>Adham Amgad</h1>
+  <p>Industrial Automation Engineer</p>
+  <p style="font-size:0.9rem;opacity:0.5;">
+    PLC • SCADA • DCS • Industry 4.0
+  </p>
 </header>
 
-<div class="dashboard">
-
-  <!-- PROFILE PANEL -->
-  <div class="panel">
-    <h2>Operator Info</h2>
-    <p><strong>Name:</strong> Adham Amgad Ibrahem</p>
-    <p><strong>Role:</strong> Automation Engineer</p>
-    <p><strong>Status:</strong> Active</p>
+<section>
+  <h2>About</h2>
+  <div class="card">
+    Automation engineer specialized in PLC, SCADA, and industrial systems.
   </div>
-
-  <!-- KPI PANEL -->
-  <div class="panel">
-    <h2>System KPIs</h2>
-
-    <div class="kpi">
-      <span>Experience</span>
-      <strong>~2 Years</strong>
-    </div>
-
-    <div class="kpi">
-      <span>Projects</span>
-      <strong>5+</strong>
-    </div>
-
-    <div class="kpi">
-      <span>Systems</span>
-      <strong>PCS7 / SCADA</strong>
-    </div>
-  </div>
-
-  <!-- EXPERIENCE -->
-  <div class="panel">
-    <h2>Recent Operations</h2>
-    <ul>
-      <li>PCS7 Migration from Rockwell</li>
-      <li>Slag Grinding Mill Commissioning</li>
-      <li>SCADA Design (WinCC)</li>
-      <li>I/O Testing & FAT Execution</li>
-    </ul>
-  </div>
-
-  <!-- SKILLS -->
-  <div class="panel">
-    <h2>Control Systems</h2>
-    <ul>
-      <li>PLC: Siemens, PCS7, Rockwell</li>
-      <li>SCADA: WinCC, Ignition</li>
-      <li>Protocols: Profinet, Modbus, OPC</li>
-    </ul>
-  </div>
-
-  <!-- PROJECTS -->
-  <div class="panel">
-    <h2>Projects Log</h2>
-    <ul>
-      <li>Smart PV Motor Control (AI + VFD)</li>
-      <li>Cement Plant DCS Upgrade</li>
-    </ul>
-  </div>
-
-  <!-- CONTACT -->
-  <div class="panel">
-    <h2>Communication</h2>
-    <p>Email: adham.amgad0710@gmail.com</p>
-    <p>LinkedIn: 
-      <a href="https://www.linkedin.com/in/adham-amgad1/" target="_blank">Open Profile</a>
-    </p>
-  </div>
-
-</div>
+</section>
 
 <footer>
-  © 2026 | Industrial Automation Dashboard Interface
+  © 2026 Adham Amgad
 </footer>
 
 </body>
