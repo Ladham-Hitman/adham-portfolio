@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Adham Amgad | Automation Engineer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adham Amgad | SCADA Dashboard</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -13,226 +13,184 @@
 body{
   font-family:'Poppins',sans-serif;
   background:#020617;
-  color:#e2e8f0;
-  line-height:1.6;
-  overflow-x:hidden;
-}
-
-/* GRID BACKGROUND (Industrial feel) */
-body::before{
-  content:"";
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:
-    linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px);
-  background-size:40px 40px;
-  z-index:-1;
+  color:#e5e7eb;
 }
 
 /* HEADER */
 header{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  text-align:center;
-  background:radial-gradient(circle at top, #1e3a8a, #020617);
   padding:20px;
-}
-
-header img{
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  object-fit:cover;
-  border:3px solid #38bdf8;
-  box-shadow:0 0 20px #38bdf8;
-  margin-bottom:20px;
+  border-bottom:1px solid #1f2937;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 header h1{
-  font-size:2.8rem;
-  background:linear-gradient(90deg,#38bdf8,#6366f1);
-  -webkit-background-clip:text;
-  color:transparent;
-}
-
-header p{
-  opacity:0.7;
-  margin-top:10px;
-  letter-spacing:1px;
-}
-
-/* SECTION */
-section{
-  max-width:1000px;
-  margin:auto;
-  padding:70px 20px;
-}
-
-h2{
+  font-size:1.2rem;
   color:#38bdf8;
-  margin-bottom:25px;
-  font-size:1.9rem;
-  border-left:4px solid #38bdf8;
-  padding-left:10px;
 }
 
-/* CARD */
-.card{
-  background:rgba(17,27,46,0.6);
-  backdrop-filter:blur(10px);
-  padding:20px;
-  border-radius:12px;
-  margin-bottom:20px;
-  border:1px solid rgba(56,189,248,0.2);
-  transition:0.3s;
-  position:relative;
+.status{
+  display:flex;
+  gap:10px;
+  align-items:center;
 }
 
-.card:hover{
-  transform:translateY(-6px) scale(1.01);
-  border-color:#38bdf8;
-  box-shadow:0 0 20px rgba(56,189,248,0.3);
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#22c55e;
+  box-shadow:0 0 8px #22c55e;
 }
 
-/* GRID */
-.grid{
+/* GRID LAYOUT */
+.dashboard{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:15px;
+  padding:20px;
 }
 
-/* LINKS */
-a{
+/* PANEL */
+.panel{
+  background:#0f172a;
+  border:1px solid #1e293b;
+  border-radius:10px;
+  padding:15px;
+}
+
+.panel h2{
+  font-size:1rem;
+  margin-bottom:10px;
   color:#38bdf8;
-  text-decoration:none;
-  transition:0.3s;
 }
 
-a:hover{
-  text-shadow:0 0 10px #38bdf8;
+/* KPI BOXES */
+.kpi{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#020617;
+  border:1px solid #1e293b;
+  padding:10px;
+  border-radius:8px;
+  margin-bottom:10px;
+}
+
+.kpi span{
+  font-size:0.8rem;
+  opacity:0.7;
+}
+
+.kpi strong{
+  color:#22c55e;
+}
+
+/* LIST */
+ul{
+  padding-left:15px;
+  font-size:0.9rem;
+}
+
+li{
+  margin-bottom:5px;
 }
 
 /* FOOTER */
 footer{
   text-align:center;
-  padding:20px;
-  background:#020617;
+  padding:15px;
+  border-top:1px solid #1f2937;
+  font-size:0.8rem;
   opacity:0.6;
-  font-size:0.9rem;
 }
-
-/* subtle animation */
-@keyframes glow{
-  0%{box-shadow:0 0 5px #38bdf8;}
-  50%{box-shadow:0 0 20px #38bdf8;}
-  100%{box-shadow:0 0 5px #38bdf8;}
-}
-
-header img{
-  animation:glow 3s infinite;
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-  <img src="Profile Linkedin1.png" alt="Adham Amgad">
-  <h1>Adham Amgad Ibrahem</h1>
-  <p>Industrial Automation & Control Systems Engineer</p>
+  <h1>Adham Amgad | Automation System</h1>
+  <div class="status">
+    <div class="dot"></div>
+    <span>System Online</span>
+  </div>
 </header>
 
-<section>
-  <h2>About Me</h2>
-  <div class="card">
-    <p>
-      Electrical Power and Machines Engineer specialized in industrial automation,
-      PLC programming, and control systems. Experienced with Siemens PCS7, SCADA,
-      and industrial communication protocols. Focused on Industry 4.0 and system optimization.
-    </p>
-  </div>
-</section>
+<div class="dashboard">
 
-<section>
-  <h2>Summary</h2>
-  <div class="card">
-    <p>
-      Automation Engineer with ~2 years of experience in PLC programming, DCS, SCADA,
-      and commissioning of large-scale industrial projects in cement and manufacturing sectors.
-    </p>
+  <!-- PROFILE PANEL -->
+  <div class="panel">
+    <h2>Operator Info</h2>
+    <p><strong>Name:</strong> Adham Amgad Ibrahem</p>
+    <p><strong>Role:</strong> Automation Engineer</p>
+    <p><strong>Status:</strong> Active</p>
   </div>
-</section>
 
-<section>
-  <h2>Experience</h2>
-  <div class="card">
-    <strong>Industrial Automation Engineer – IMHOSYS</strong><br>
-    09/2024 – Present
+  <!-- KPI PANEL -->
+  <div class="panel">
+    <h2>System KPIs</h2>
+
+    <div class="kpi">
+      <span>Experience</span>
+      <strong>~2 Years</strong>
+    </div>
+
+    <div class="kpi">
+      <span>Projects</span>
+      <strong>5+</strong>
+    </div>
+
+    <div class="kpi">
+      <span>Systems</span>
+      <strong>PCS7 / SCADA</strong>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="panel">
+    <h2>Recent Operations</h2>
     <ul>
-      <li>PCS7 DCS upgrade from Rockwell systems using CEMAT</li>
-      <li>Slag Grinding Mill project (design, networking, documentation)</li>
-      <li>SCADA design & PLC programming (S7-400 / S7-1500)</li>
-      <li>Commissioning, FAT, and I/O testing</li>
-      <li>Protocols: Profinet, Profibus, Ethernet/IP, Modbus RTU/TCP</li>
+      <li>PCS7 Migration from Rockwell</li>
+      <li>Slag Grinding Mill Commissioning</li>
+      <li>SCADA Design (WinCC)</li>
+      <li>I/O Testing & FAT Execution</li>
     </ul>
   </div>
 
-  <div class="card">
-    <strong>Electrical Maintenance Engineer – ALASHRAM HI ONE</strong><br>
-    07/2024 – 08/2024
+  <!-- SKILLS -->
+  <div class="panel">
+    <h2>Control Systems</h2>
     <ul>
-      <li>Machine installation, wiring, and maintenance</li>
+      <li>PLC: Siemens, PCS7, Rockwell</li>
+      <li>SCADA: WinCC, Ignition</li>
+      <li>Protocols: Profinet, Modbus, OPC</li>
     </ul>
   </div>
-</section>
 
-<section>
-  <h2>Skills</h2>
-  <div class="card grid">
-    <div>PLC: Siemens, PCS7, Rockwell</div>
-    <div>SCADA: WinCC, Ignition, Wonderware</div>
-    <div>Networks: Profinet, Profibus, Modbus, OPC UA</div>
-    <div>Programming: Python, C, Java (Basic)</div>
-    <div>Tools: Factory IO, Node-RED, SQL</div>
-  </div>
-</section>
-
-<section>
-  <h2>Projects</h2>
-  <div class="card">
-    <strong>Smart PV Motor Control</strong>
-    <p>AI-based optimization using PLC, VFD, and ANN.</p>
+  <!-- PROJECTS -->
+  <div class="panel">
+    <h2>Projects Log</h2>
+    <ul>
+      <li>Smart PV Motor Control (AI + VFD)</li>
+      <li>Cement Plant DCS Upgrade</li>
+    </ul>
   </div>
 
-  <div class="card">
-    <strong>Cement Plant DCS Upgrade</strong>
-    <p>Migration to Siemens PCS7 with SCADA redesign.</p>
-  </div>
-</section>
-
-<section>
-  <h2>Education</h2>
-  <div class="card">
-    Zagazig University – Electrical Power & Machines Engineering (2019–2024)
-  </div>
-</section>
-
-<section>
-  <h2>Contact</h2>
-  <div class="card">
+  <!-- CONTACT -->
+  <div class="panel">
+    <h2>Communication</h2>
     <p>Email: adham.amgad0710@gmail.com</p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/adham-amgad1/" target="_blank">View Profile</a></p>
+    <p>LinkedIn: 
+      <a href="https://www.linkedin.com/in/adham-amgad1/" target="_blank">Open Profile</a>
+    </p>
   </div>
-</section>
+
+</div>
 
 <footer>
-  © 2026 Adham Amgad | Automation Portfolio
+  © 2026 | Industrial Automation Dashboard Interface
 </footer>
 
 </body>
