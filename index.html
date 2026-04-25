@@ -3,86 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Adham Amgad | Automation Engineer</title>
+  <title>Adham Amgad | Industrial Automation Engineer</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{margin:0;padding:0;box-sizing:border-box;}
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#0b1220;
+      color:#fff;
+      line-height:1.6;
     }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #0f172a;
-      color: white;
-      overflow-x: hidden;
+    header{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      text-align:center;
+      background:linear-gradient(135deg,#0f172a,#1e3a8a);
+      padding:20px;
     }
 
-    header {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(135deg, #1e3a8a, #0f172a);
-      animation: fadeIn 2s ease-in-out;
+    header img{
+      width:160px;
+      height:160px;
+      border-radius:50%;
+      object-fit:cover;
+      border:4px solid #38bdf8;
+      margin-bottom:20px;
     }
 
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+    header h1{
+      font-size:2.8rem;
     }
 
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.8;
+    header p{
+      opacity:0.8;
+      margin-top:10px;
     }
 
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
+    section{
+      max-width:1000px;
+      margin:auto;
+      padding:60px 20px;
     }
 
-    h2 {
-      margin-bottom: 20px;
-      color: #38bdf8;
+    h2{
+      color:#38bdf8;
+      margin-bottom:20px;
+      font-size:1.8rem;
     }
 
-    .card {
-      background: #1e293b;
-      padding: 20px;
-      border-radius: 15px;
-      margin-bottom: 20px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .card{
+      background:#111b2e;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+      transition:0.3s;
+      border:1px solid #1f2a44;
     }
 
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    .card:hover{
+      transform:translateY(-5px);
+      border-color:#38bdf8;
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #020617;
-      font-size: 0.9rem;
-      opacity: 0.6;
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:15px;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    a{color:#38bdf8;text-decoration:none;}
+
+    footer{
+      text-align:center;
+      padding:20px;
+      background:#020617;
+      opacity:0.7;
+      font-size:0.9rem;
     }
   </style>
 </head>
@@ -90,17 +93,31 @@
 <body>
 
 <header>
-  <h1>Adham Amgad</h1>
-  <p>Electrical Power Engineer | Automation & AI Enthusiast</p>
+  <!-- PUT YOUR IMAGE HERE -->
+  <img src="your-photo.jpg" alt="Adham Amgad">
+  <h1>Adham Amgad Ibrahem</h1>
+  <p>Electrical Power Engineer | Industrial Automation & Control Systems Engineer</p>
 </header>
 
 <section>
   <h2>About Me</h2>
   <div class="card">
     <p>
-      I am an Electrical Power Engineer specialized in industrial automation and control systems.
-      I have hands-on experience with PLC programming, SCADA systems, and Siemens PCS7.
-      I am passionate about integrating AI into industrial applications to optimize performance and efficiency.
+      A passionate Electrical Power and Machines Engineer specialized in industrial automation,
+      control systems, and PLC programming. Experienced in Siemens PCS7, SCADA systems,
+      and industrial communication protocols. Strong interest in AI-driven industrial optimization
+      and digital transformation.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>Summary</h2>
+  <div class="card">
+    <p>
+      Industrial Automation Engineer with ~2 years of hands-on experience in PLC programming,
+      DCS systems, SCADA design, and commissioning of large-scale industrial projects in the cement
+      and manufacturing sectors.
     </p>
   </div>
 </section>
@@ -108,52 +125,66 @@
 <section>
   <h2>Experience</h2>
   <div class="card">
-    <p><strong>Graduation Project:</strong> Smart Operation of Induction Motors Drives Fed from PV Using AI and PLC</p>
-    <p>Used ANN and Genetic Algorithms to optimize motor performance powered by PV systems.</p>
+    <strong>Industrial Automation Engineer – IMHOSYS Company</strong><br>
+    09/2024 – Present
+    <ul>
+      <li>PCS7 DCS migration for cement plant (CEMAT library)</li>
+      <li>WinCC SCADA design and PLC programming (S7-400, S7-1500)</li>
+      <li>Site commissioning, FAT, and I/O testing</li>
+      <li>Industrial network design (Profinet, Ethernet)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <strong>Electrical Maintenance Engineer – ALASHRAM HI ONE Textile</strong><br>
+    07/2024 – 08/2024
+    <ul>
+      <li>Machine installation and electrical maintenance</li>
+    </ul>
   </div>
 </section>
 
 <section>
   <h2>Skills</h2>
-  <div class="card">
-    <p>
-      PLC Programming | Siemens PCS7 | SCADA (WinCC, Ignition) | 
-      Profinet | Industrial Ethernet | Python | AI Basics
-    </p>
+  <div class="card grid">
+    <div>PLC: Siemens TIA Portal, PCS7, Rockwell</div>
+    <div>SCADA: WinCC, Ignition, Wonderware</div>
+    <div>Networks: Profinet, Modbus TCP/RTU, OPC UA</div>
+    <div>Programming: Python (Basic), C, Java</div>
+    <div>Tools: Factory IO, Node-RED, SQL</div>
   </div>
 </section>
 
 <section>
   <h2>Projects</h2>
   <div class="card">
-    <p>AI-Based Motor Efficiency Prediction</p>
+    <strong>Smart PV Motor Control System</strong>
+    <p>AI-based optimization of induction motor drives using PLC + VFD + ANN model.</p>
   </div>
+
   <div class="card">
-    <p>SCADA System Simulation</p>
+    <strong>Cement Plant DCS Upgrade</strong>
+    <p>Migration from Allen Bradley to Siemens PCS7 with full SCADA redesign.</p>
   </div>
 </section>
 
 <section>
-  <h2>Interests</h2>
+  <h2>Education</h2>
   <div class="card">
-    <p>
-      Industrial Automation, AI in Industry, Digital Transformation, IIoT
-    </p>
+    Zagazig University – Electrical Power & Machines Engineering (2019–2024)
   </div>
 </section>
 
 <section>
   <h2>Contact</h2>
   <div class="card">
-    <p>Connect with me:</p>
-    <p>
-      <a href="https://www.linkedin.com" target="_blank" style="color:#38bdf8;">LinkedIn</a>
-    </p>
+    <p>Email: adham.amgad0710@gmail.com</p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/adham-amgad1/" target="_blank">Profile</a></p>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Adham Amgad | Portfolio</p>
+  © 2026 Adham Amgad | Industrial Automation Portfolio
 </footer>
 
 </body>
