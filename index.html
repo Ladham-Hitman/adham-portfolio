@@ -3,104 +3,256 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adham Amgad | Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Adham Amgad | Industrial Automation Engineer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 body{
   font-family:'Poppins',sans-serif;
   background:#020617;
   color:#e2e8f0;
+  line-height:1.6;
 }
 
-/* subtle industrial background */
+/* INDUSTRIAL BACKGROUND (HMI feel) */
 body::before{
   content:"";
   position:fixed;
-  width:100%;
-  height:100%;
+  inset:0;
   background:
     radial-gradient(circle at 20% 20%, rgba(56,189,248,0.08), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(59,130,246,0.08), transparent 40%);
+    radial-gradient(circle at 80% 70%, rgba(99,102,241,0.08), transparent 40%);
   z-index:-1;
 }
 
-/* header */
+/* HEADER */
 header{
-  height:90vh;
+  min-height:90vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
+  padding:20px;
 }
 
 header img{
-  width:150px;
-  height:150px;
+  width:160px;
+  height:160px;
   border-radius:50%;
+  object-fit:cover;
   border:3px solid #38bdf8;
-  margin-bottom:15px;
+  margin-bottom:20px;
+  box-shadow:0 0 15px rgba(56,189,248,0.2);
 }
 
-h1{font-size:2.5rem;}
-p{opacity:0.7;margin-top:10px;}
+header h1{
+  font-size:2.6rem;
+  letter-spacing:1px;
+}
 
+header p{
+  opacity:0.7;
+  margin-top:10px;
+}
+
+/* SECTIONS */
 section{
-  max-width:900px;
+  max-width:1000px;
   margin:auto;
-  padding:50px 20px;
+  padding:60px 20px;
 }
 
+/* SECTION TITLE */
 h2{
   color:#38bdf8;
-  margin-bottom:15px;
+  margin-bottom:20px;
+  font-size:1.7rem;
+  border-left:3px solid #38bdf8;
+  padding-left:10px;
 }
 
+/* CARD STYLE */
 .card{
   background:#0f172a;
-  padding:15px;
+  padding:20px;
   border-radius:10px;
   border:1px solid #1e293b;
-  margin-bottom:15px;
+  margin-bottom:20px;
+  transition:0.3s ease;
 }
 
 .card:hover{
   border-color:#38bdf8;
+  box-shadow:0 0 12px rgba(56,189,248,0.15);
+  transform:translateY(-3px);
 }
 
+/* SKILLS GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+/* LINKS */
+a{
+  color:#38bdf8;
+  text-decoration:none;
+}
+
+a:hover{
+  text-shadow:0 0 6px #38bdf8;
+}
+
+/* FOOTER */
 footer{
   text-align:center;
   padding:20px;
   opacity:0.6;
+  border-top:1px solid #1e293b;
 }
+
+/* ===================== */
+/* SMOOTH SCROLL ANIMATION */
+/* ===================== */
+
+.hidden{
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity 0.5s ease, transform 0.5s ease;
+}
+
+.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
-  <img src="https://via.placeholder.com/150">
-  <h1>Adham Amgad</h1>
-  <p>Industrial Automation Engineer</p>
-  <p style="font-size:0.9rem;opacity:0.5;">
-    PLC • SCADA • DCS • Industry 4.0
+<header class="hidden">
+  <img src="Profile.jpg" alt="Adham Amgad">
+  <h1>Adham Amgad Ibrahem</h1>
+  <p>Industrial Automation & Control Systems Engineer</p>
+  <p style="opacity:0.5;font-size:0.9rem;margin-top:5px;">
+    PLC • SCADA • DCS • Commissioning • Industry 4.0
   </p>
 </header>
 
-<section>
-  <h2>About</h2>
+<section class="hidden">
+  <h2>About Me</h2>
   <div class="card">
-    Automation engineer specialized in PLC, SCADA, and industrial systems.
+    Electrical Power and Machines Engineer specialized in industrial automation,
+    PLC programming, SCADA systems, and industrial communication protocols.
   </div>
 </section>
 
-<footer>
-  © 2026 Adham Amgad
+<section class="hidden">
+  <h2>Summary</h2>
+  <div class="card">
+    Automation Engineer with experience in PLC, DCS (PCS7), SCADA design,
+    and commissioning of industrial systems in cement and manufacturing plants.
+  </div>
+</section>
+
+<section class="hidden">
+  <h2>Experience</h2>
+
+  <div class="card">
+    <strong>Industrial Automation Engineer – IMHOSYS</strong><br>
+    09/2024 – Present
+    <hr style="border:0;border-top:1px solid #1e293b;margin:10px 0;">
+    <ul>
+      <li>PCS7 migration from Rockwell systems</li>
+      <li>Slag Grinding Mill project engineering</li>
+      <li>SCADA design using WinCC</li>
+      <li>FAT, commissioning, and I/O testing</li>
+      <li>Profinet, Profibus, Modbus, Ethernet/IP</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <strong>Electrical Maintenance Engineer – ALASHRAM HI ONE</strong><br>
+    07/2024 – 08/2024
+    <hr style="border:0;border-top:1px solid #1e293b;margin:10px 0;">
+    Machine installation, wiring, and maintenance.
+  </div>
+
+</section>
+
+<section class="hidden">
+  <h2>Skills</h2>
+
+  <div class="card grid">
+    <div><strong>PLC</strong><br>Siemens, PCS7, Rockwell</div>
+    <div><strong>SCADA</strong><br>WinCC, Ignition</div>
+    <div><strong>Protocols</strong><br>Profinet, Modbus, OPC UA</div>
+    <div><strong>Programming</strong><br>Python, C, Java (Basic)</div>
+    <div><strong>Tools</strong><br>Factory IO, Node-RED, SQL</div>
+  </div>
+
+</section>
+
+<section class="hidden">
+  <h2>Projects</h2>
+
+  <div class="card">
+    Smart PV Motor Control System using PLC + VFD + AI optimization.
+  </div>
+
+  <div class="card">
+    Cement Plant DCS Upgrade using Siemens PCS7.
+  </div>
+
+</section>
+
+<section class="hidden">
+  <h2>Education</h2>
+
+  <div class="card">
+    Zagazig University – Electrical Power & Machines Engineering (2019–2024)
+  </div>
+
+</section>
+
+<section class="hidden">
+  <h2>Contact</h2>
+
+  <div class="card">
+    Email: adham.amgad0710@gmail.com<br>
+    LinkedIn: <a href="https://www.linkedin.com/in/adham-amgad1/" target="_blank">Profile</a>
+  </div>
+
+</section>
+
+<footer class="hidden">
+  © 2026 Adham Amgad | Industrial Automation Portfolio
 </footer>
+
+<script>
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{threshold:0.12});
+
+document.querySelectorAll('.hidden').forEach(el=>{
+  observer.observe(el);
+});
+</script>
 
 </body>
 </html>
