@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Adham Amgad — Controls & Industrial Automation Engineer</title>
+<meta name="description" content="Adham Amgad — Controls & Industrial Automation Engineer. PLC, DCS and SCADA design across cement, food & beverage, irrigation and substation automation projects in Egypt and Saudi Arabia." />
+<meta property="og:title" content="Adham Amgad — Controls & Industrial Automation Engineer" />
+<meta property="og:description" content="PLC, DCS and SCADA engineer. Siemens PCS7, TIA Portal, Ignition, WinCC, ProfiNet, OPC UA, IEC 61850." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#0a0e13" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230a0e13'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%232bd99f' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%232bd99f'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+  /* ============ TOKENS ============ */
+  :root{
+    --void:#0a0e13;
+    --panel:#101820;
+    --panel-2:#15202b;
+    --line:#213040;
+    --grid-line: rgba(95,138,166,0.07);
+
+    --ink:#eaf0f5;
+    --ink-dim:#92a3b4;
+    --ink-faint:#5b6c7d;
+
+    --signal:#2bd99f;
+    --signal-soft: rgba(43,217,159,0.14);
+    --alert:#ffb238;
+    --alert-soft: rgba(255,178,56,0.14);
+    --wire:#4f7d96;
+
+    --font-display:'Oswald', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+
+    --r-sm:3px;
+    --r-md:6px;
+    --r-lg:8px;
+
+    --max:1080px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--void);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-weight:400;
+    line-height:1.65;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 42px 42px;
+  }
+
+  img{ max-width:100%; display:block; }
+
+  a{ color:var(--signal); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+
+  :focus-visible{
+    outline: 2px solid var(--signal);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .skip-link{
+    position:absolute; left:-999px; top:auto;
+    background:var(--signal); color:var(--void);
+    padding:10px 16px; font-family:var(--font-mono); font-size:13px;
+    z-index:100; border-radius: 0 0 var(--r-sm) 0;
+  }
+  .skip-link:focus{ left:0; top:0; }
+
+  h1,h2,h3{
+    font-family:var(--font-display);
+    font-weight:600;
+    letter-spacing:0.01em;
+    margin:0;
+    color:var(--ink);
+  }
+
+  .eyebrow{
+    display:block;
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--signal);
+    margin-bottom:10px;
+  }
+
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 24px; }
+
+  /* ============ NAV ============ */
+  .panel-nav{
+    position:sticky; top:0; z-index:40;
+    background:rgba(10,14,19,0.88);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .panel-nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:18px; padding-top:14px; padding-bottom:14px;
+  }
+  .nav-id{
+    font-family:var(--font-mono); font-size:13px; color:var(--ink-dim);
+    white-space:nowrap;
+  }
+  .nav-id b{ color:var(--ink); font-weight:600; }
+  .nav-links{
+    display:flex; gap:22px; overflow-x:auto;
+    font-family:var(--font-mono); font-size:12.5px;
+    letter-spacing:0.06em; text-transform:uppercase;
+    scrollbar-width:none;
+  }
+  .nav-links::-webkit-scrollbar{ display:none; }
+  .nav-links a{
+    color:var(--ink-dim); white-space:nowrap; padding:4px 2px;
+    border-bottom:2px solid transparent;
+  }
+  .nav-links a:hover, .nav-links a.active{
+    color:var(--ink); text-decoration:none; border-bottom-color:var(--signal);
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    padding:72px 0 56px;
+    border-bottom:1px solid var(--line);
+  }
+  .tag-line{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--font-mono); font-size:13px; color:var(--ink-dim);
+    border:1px solid var(--line); background:var(--panel);
+    padding:7px 14px; border-radius:999px; margin-bottom:28px;
+  }
+  .status-dot{
+    width:8px; height:8px; border-radius:50%; background:var(--signal);
+    box-shadow:0 0 0 0 var(--signal-soft);
+    animation: pulse-dot 2.2s infinite;
+  }
+  @keyframes pulse-dot{
+    0%{ box-shadow:0 0 0 0 var(--signal-soft); }
+    70%{ box-shadow:0 0 0 8px rgba(43,217,159,0); }
+    100%{ box-shadow:0 0 0 0 rgba(43,217,159,0); }
+  }
+
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.4rem);
+    line-height:1.02;
+    text-transform:uppercase;
+  }
+  .hero .role{
+    font-family:var(--font-display);
+    font-size:clamp(1.1rem, 2.4vw, 1.5rem);
+    color:var(--signal);
+    margin-top:10px;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+  }
+  .hero .sub{
+    max-width:640px;
+    color:var(--ink-dim);
+    font-size:1.02rem;
+    margin-top:16px;
+  }
+
+  /* process mimic diagram */
+  .mimic{
+    margin:48px 0 40px;
+    border:1px solid var(--line);
+    background:var(--panel);
+    border-radius:var(--r-lg);
+    padding:28px 24px 22px;
+  }
+  .mimic-cap{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:18px;
+  }
+  .mimic-track{
+    display:flex; align-items:center; gap:4px;
+  }
+  .node{
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    flex:0 0 auto; width:96px;
+  }
+  .node-icon{
+    width:52px; height:52px; border:1.5px solid var(--wire);
+    border-radius:var(--r-md);
+    display:flex; align-items:center; justify-content:center;
+    background:var(--panel-2);
+  }
+  .node.is-live .node-icon{ border-color:var(--signal); }
+  .node-label{
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.06em;
+    color:var(--ink-dim); text-align:center; text-transform:uppercase;
+  }
+  .wire{
+    position:relative; flex:1 1 auto; height:2px; background:var(--line);
+    margin:0 -2px; align-self:center; margin-top:-22px;
+  }
+  .pulse{
+    position:absolute; top:50%; left:0; width:6px; height:6px;
+    margin-top:-3px; border-radius:50%; background:var(--signal);
+    opacity:0;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .pulse{ animation: travel 2.6s linear infinite; }
+    .pulse.d2{ animation-delay:1.3s; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .pulse{ opacity:0.5; left:46%; }
+  }
+  @keyframes travel{
+    0%{ left:0%; opacity:0; }
+    10%{ opacity:1; }
+    90%{ opacity:1; }
+    100%{ left:calc(100% - 6px); opacity:0; }
+  }
+  @media (max-width:640px){
+    .mimic-track{ flex-direction:column; align-items:flex-start; gap:14px; }
+    .node{ flex-direction:row; width:auto; gap:12px; }
+    .node-label{ text-align:left; }
+    .wire{ width:2px; height:22px; margin:0 0 0 25px; }
+  }
+
+  .hero-actions{ display:flex; flex-wrap:wrap; gap:12px; margin-bottom:40px; }
+  .btn{
+    font-family:var(--font-mono); font-size:13px; letter-spacing:0.04em;
+    padding:13px 22px; border-radius:var(--r-sm);
+    border:1px solid transparent; cursor:pointer; display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn:hover{ text-decoration:none; }
+  .btn-primary{ background:var(--signal); color:#062017; font-weight:600; }
+  .btn-primary:hover{ background:#3fe8af; }
+  .btn-outline{ border-color:var(--wire); color:var(--ink); background:transparent; }
+  .btn-outline:hover{ border-color:var(--signal); color:var(--signal); }
+  .btn-ghost{ color:var(--ink-dim); border-color:var(--line); background:transparent; }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-dim); }
+
+  .stat-strip{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:var(--r-md);
+    overflow:hidden;
+  }
+  .stat{ background:var(--panel); padding:18px 16px; }
+  .stat-num{
+    display:block; font-family:var(--font-display); font-size:1.9rem;
+    color:var(--ink); font-weight:600;
+  }
+  .stat-label{
+    font-family:var(--font-mono); font-size:11px; color:var(--ink-dim);
+    text-transform:uppercase; letter-spacing:0.04em;
+  }
+  @media (max-width:640px){ .stat-strip{ grid-template-columns:repeat(2,1fr); } }
+
+  /* ============ SECTIONS ============ */
+  .section{ padding:64px 0; border-bottom:1px solid var(--line); }
+  .section-head{ margin-bottom:32px; max-width:700px; }
+  .section-head h2{ font-size:1.9rem; text-transform:uppercase; }
+  .section-head p{ color:var(--ink-dim); margin-top:10px; font-size:0.98rem; }
+
+  .card{
+    background:var(--panel); border:1px solid var(--line);
+    border-radius:var(--r-lg); padding:24px 26px;
+  }
+
+  /* profile */
+  .profile-grid{ display:grid; grid-template-columns:140px 1fr; gap:32px; align-items:start; }
+  .avatar-frame{ width:120px; height:120px; position:relative; }
+  .avatar-frame svg{ width:100%; height:100%; }
+  .profile-card p{ color:var(--ink-dim); font-size:1.02rem; }
+  .profile-card p + p{ margin-top:14px; }
+  @media (max-width:640px){ .profile-grid{ grid-template-columns:1fr; } .avatar-frame{ width:84px; height:84px; } }
+
+  /* timeline */
+  .timeline{ position:relative; }
+  .t-item{ display:grid; grid-template-columns:160px 1fr; gap:28px; margin-bottom:26px; }
+  .t-item:last-child{ margin-bottom:0; }
+  .t-date{
+    font-family:var(--font-mono); font-size:12.5px; color:var(--ink-dim);
+    padding-top:24px; text-align:right;
+  }
+  .t-content{ position:relative; }
+  .t-content::before{
+    content:""; position:absolute; left:-15px; top:30px; width:9px; height:9px;
+    border-radius:50%; background:var(--void); border:2px solid var(--wire);
+  }
+  .t-item.is-live .t-content::before{ border-color:var(--signal); background:var(--signal); }
+  .t-title-row{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:4px; }
+  .t-title-row h3{ font-size:1.18rem; text-transform:none; }
+  .badge{
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.05em;
+    padding:3px 9px; border-radius:999px; text-transform:uppercase;
+  }
+  .badge-live{ background:var(--signal-soft); color:var(--signal); }
+  .t-company{ font-family:var(--font-mono); font-size:13px; color:var(--ink-faint); margin-bottom:14px; }
+  .t-content ul{ margin:0; padding-left:20px; color:var(--ink-dim); }
+  .t-content li{ margin-bottom:7px; }
+  .t-content li:last-child{ margin-bottom:0; }
+  @media (max-width:700px){
+    .t-item{ grid-template-columns:1fr; gap:8px; }
+    .t-date{ text-align:left; padding-top:0; }
+    .t-content::before{ display:none; }
+  }
+
+  /* projects */
+  .proj-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:18px; }
+  .proj-card{ display:flex; flex-direction:column; height:100%; }
+  .proj-top{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:6px; }
+  .proj-top h3{ font-size:1.08rem; text-transform:none; }
+  .proj-year{ font-family:var(--font-mono); font-size:12px; color:var(--ink-faint); white-space:nowrap; }
+  .proj-loc{ font-family:var(--font-mono); font-size:12.5px; color:var(--signal); margin-bottom:12px; }
+  .proj-card p{ color:var(--ink-dim); font-size:0.95rem; flex:1; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:7px; margin-top:16px; }
+  .chip{
+    font-family:var(--font-mono); font-size:11px; color:var(--ink-dim);
+    border:1px solid var(--line); border-radius:var(--r-sm); padding:4px 9px;
+  }
+
+  /* skills */
+  .skills-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; }
+  .skill-card h3{
+    font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px; font-weight:600;
+  }
+  .skill-card .chip-row{ margin-top:0; }
+  .skill-card .chip:hover{ border-color:var(--signal); color:var(--ink); }
+
+  /* table (courses) */
+  .io-table{ width:100%; border-collapse:collapse; }
+  .io-table th{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--ink-faint); text-align:left;
+    padding:0 14px 12px; border-bottom:1px solid var(--line); font-weight:600;
+  }
+  .io-table td{
+    padding:14px; border-bottom:1px solid var(--line); font-size:0.93rem;
+    color:var(--ink-dim); vertical-align:top;
+  }
+  .io-table tr:last-child td{ border-bottom:none; }
+  .io-table td.col-course{ color:var(--ink); }
+  .io-table td.col-date{ font-family:var(--font-mono); font-size:12px; white-space:nowrap; }
+  .table-scroll{ overflow-x:auto; }
+
+  /* education */
+  .edu-card .edu-top{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; margin-bottom:4px; }
+  .edu-card h3{ font-size:1.2rem; text-transform:none; }
+  .edu-card .edu-date{ font-family:var(--font-mono); font-size:12.5px; color:var(--ink-dim); }
+  .edu-card .edu-school{ color:var(--signal); font-family:var(--font-mono); font-size:13px; margin-bottom:18px; }
+  .edu-meta{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; }
+  .grad-project{
+    border-top:1px solid var(--line); padding-top:18px; margin-top:4px;
+  }
+  .grad-project .eyebrow{ margin-bottom:8px; }
+  .grad-project p{ color:var(--ink-dim); }
+
+  /* two-col simple lists */
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media (max-width:700px){ .two-col{ grid-template-columns:1fr; } }
+  .simple-list{ list-style:none; margin:0; padding:0; }
+  .simple-list li{
+    display:flex; justify-content:space-between; gap:14px;
+    padding:13px 0; border-bottom:1px solid var(--line); font-size:0.93rem; color:var(--ink-dim);
+  }
+  .simple-list li:last-child{ border-bottom:none; }
+  .simple-list .li-title{ color:var(--ink); }
+  .simple-list .li-date{ font-family:var(--font-mono); font-size:11.5px; white-space:nowrap; color:var(--ink-faint); }
+
+  /* languages / soft skills */
+  .pill-row{ display:flex; flex-wrap:wrap; gap:9px; }
+  .pill{
+    font-family:var(--font-mono); font-size:12px; color:var(--ink);
+    border:1px solid var(--line); background:var(--panel-2);
+    padding:7px 13px; border-radius:999px;
+  }
+  .pill.lang span{ color:var(--ink-faint); margin-left:6px; }
+
+  /* contact / footer */
+  .contact-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:32px; }
+  @media (max-width:700px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact-list{ list-style:none; margin:0; padding:0; }
+  .contact-list li{ padding:14px 0; border-bottom:1px solid var(--line); }
+  .contact-list li:last-child{ border-bottom:none; }
+  .contact-list .c-label{
+    display:block; font-family:var(--font-mono); font-size:11px; color:var(--ink-faint);
+    text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px;
+  }
+  .contact-list .c-value{ font-size:1.02rem; }
+
+  footer{ padding:34px 0; }
+  footer .wrap{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; }
+  footer p{ font-family:var(--font-mono); font-size:12px; color:var(--ink-faint); margin:0; }
+
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="panel-nav">
+  <div class="wrap">
+    <span class="nav-id"><b>ADHAM AMGAD</b> // CONTROLS ENGINEER</span>
+    <div class="nav-links">
+      <a href="#profile">Profile</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#courses">Courses</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="tag-line"><span class="status-dot" aria-hidden="true"></span> TAG: ADHAM_AMGAD &nbsp;//&nbsp; STATUS: ONLINE</div>
+
+      <h1>Adham Amgad</h1>
+      <p class="role">Controls &amp; Industrial Automation Engineer</p>
+      <p class="sub">PLC &amp; DCS programming, SCADA/HMI design, and industrial networks — across cement, food &amp; beverage, irrigation and substation automation projects in Egypt and Saudi Arabia.</p>
+
+      <div class="mimic" aria-hidden="true">
+        <span class="mimic-cap">Process mimic // signal path</span>
+        <div class="mimic-track">
+          <div class="node">
+            <div class="node-icon">
+              <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="4" stroke="#4f7d96" stroke-width="1.5"/><line x1="13" y1="1" x2="13" y2="6" stroke="#4f7d96" stroke-width="1.5"/><line x1="13" y1="20" x2="13" y2="25" stroke="#4f7d96" stroke-width="1.5"/><line x1="1" y1="13" x2="6" y2="13" stroke="#4f7d96" stroke-width="1.5"/><line x1="20" y1="13" x2="25" y2="13" stroke="#4f7d96" stroke-width="1.5"/></svg>
+            </div>
+            <span class="node-label">Field I/O</span>
+          </div>
+          <div class="wire"><span class="pulse"></span><span class="pulse d2"></span></div>
+          <div class="node">
+            <div class="node-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="3" width="20" height="22" rx="1.5" stroke="#4f7d96" stroke-width="1.5"/><line x1="7" y1="9" x2="21" y2="9" stroke="#4f7d96" stroke-width="1.5"/><line x1="7" y1="14" x2="21" y2="14" stroke="#4f7d96" stroke-width="1.5"/><line x1="7" y1="19" x2="21" y2="19" stroke="#4f7d96" stroke-width="1.5"/></svg>
+            </div>
+            <span class="node-label">PLC / DCS</span>
+          </div>
+          <div class="wire"><span class="pulse"></span><span class="pulse d2"></span></div>
+          <div class="node">
+            <div class="node-icon">
+              <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><polygon points="13,2 23,8 23,18 13,24 3,18 3,8" stroke="#4f7d96" stroke-width="1.5" fill="none"/><circle cx="13" cy="13" r="2.2" fill="#4f7d96"/></svg>
+            </div>
+            <span class="node-label">Network</span>
+          </div>
+          <div class="wire"><span class="pulse"></span><span class="pulse d2"></span></div>
+          <div class="node is-live">
+            <div class="node-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="4" width="22" height="16" rx="1.5" stroke="#2bd99f" stroke-width="1.5"/><line x1="6" y1="9" x2="18" y2="9" stroke="#2bd99f" stroke-width="1.2"/><line x1="6" y1="13" x2="22" y2="13" stroke="#2bd99f" stroke-width="1.2"/><line x1="10" y1="24" x2="18" y2="24" stroke="#2bd99f" stroke-width="1.5"/></svg>
+            </div>
+            <span class="node-label">SCADA / HMI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:adham.amgad0710@gmail.com">Email me</a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/adham-amgad1/" target="_blank" rel="noopener">LinkedIn profile</a>
+        <a class="btn btn-ghost" href="Adham_Amgad_CV.pdf" download>Download CV (PDF)</a>
+      </div>
+
+      <div class="stat-strip">
+        <div class="stat"><span class="stat-num">2+</span><span class="stat-label">Years in automation</span></div>
+        <div class="stat"><span class="stat-num">5</span><span class="stat-label">DCS / PLC migrations</span></div>
+        <div class="stat"><span class="stat-num">9+</span><span class="stat-label">Comms protocols</span></div>
+        <div class="stat"><span class="stat-num">4</span><span class="stat-label">Industry sectors</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" id="profile">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sec // Profile</span>
+        <h2>Profile</h2>
+      </div>
+      <div class="card profile-grid reveal">
+        <div class="avatar-frame" aria-hidden="true">
+          <svg viewBox="0 0 120 120" fill="none">
+            <polygon points="60,4 110,32 110,88 60,116 10,88 10,32" stroke="#2bd99f" stroke-width="2" fill="#15202b"/>
+            <polygon points="60,16 99,38 99,82 60,104 21,82 21,38" stroke="#213040" stroke-width="1"/>
+            <text x="60" y="70" text-anchor="middle" font-family="Oswald, sans-serif" font-size="34" font-weight="600" fill="#eaf0f5">AA</text>
+          </svg>
+        </div>
+        <div class="profile-card">
+          <p>A motivated, detail-oriented Electrical Power and Machines Engineer with ~2 years of experience across industrial automation, PLC programming, and DCS systems, spanning cement and food &amp; beverage processes. Skilled in P&amp;ID interpretation, PID loop tuning, and field instrumentation including sensors and transmitters.</p>
+          <p>Experienced in Siemens PCS7 (DCS), SCADA platforms (Ignition 8.1, WinCC), and industrial communication protocols including ProfiNet, OPC UA, Profibus, and Modbus RTU. Passionate about Industry 4.0, Substation Automation Systems (SAS), and driving digital transformation across industrial environments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sec // Experience log</span>
+        <h2>Professional experience</h2>
+      </div>
+
+      <div class="timeline">
+
+        <div class="t-item is-live reveal">
+          <div class="t-date">05/2026 — Present</div>
+          <div class="t-content card">
+            <div class="t-title-row"><h3>Controls Systems Engineer</h3><span class="badge badge-live">● Active</span></div>
+            <div class="t-company">Controware — Zahraa Elmaadi, Egypt</div>
+            <ul>
+              <li>Process P&amp;ID reading and interpretation for an irrigation project in Saudi Arabia</li>
+              <li>Verification of RTU I/O lists and SCADA mapping lists for the same irrigation project</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="t-item reveal">
+          <div class="t-date">05/2026 — 06/2026</div>
+          <div class="t-content card">
+            <div class="t-title-row"><h3>Controls / Field Service Engineer <span style="color:var(--ink-faint); font-weight:400; font-size:0.85em;">(Part-time)</span></h3></div>
+            <div class="t-company">JBT Marel — Relocatable</div>
+            <ul>
+              <li>Electrical panel wiring revision and inspection for food &amp; beverage process lines</li>
+              <li>Site commissioning of PLC programs in TIA Portal and Rockwell RSLogix 5000</li>
+              <li>HMI edits in FactoryTalk View SE based on client requirements</li>
+              <li>Configuration of Ewon Flexy 205 routers for IIoT integration</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="t-item reveal">
+          <div class="t-date">09/2024 — 05/2026</div>
+          <div class="t-content card">
+            <div class="t-title-row"><h3>Industrial Automation Engineer</h3></div>
+            <div class="t-company">IMHOSYS Company — Maadi, Egypt</div>
+            <ul>
+              <li>Led the DCS upgrade of Sinai Cement Grey Co. from Allen-Bradley to Siemens PCS7 V9.1 on the CEMAT Minerals library</li>
+              <li>WinCC SCADA design and FBD logic design using the CFC tool; bulk engineering creation with IEA</li>
+              <li>Configured Siemens hardware including S7-400, ET200SP, ET200SP HA, and CPU 1500 series</li>
+              <li>Performed site surveys, FAT/SAT testing, I/O testing, calibration verification, and site commissioning</li>
+              <li>Designed network architecture linking servers, clients, Level 1 stations, and engineering stations</li>
+              <li>Supported automation material selection and network topology planning</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="t-item reveal">
+          <div class="t-date">07/2024 — 08/2024</div>
+          <div class="t-content card">
+            <div class="t-title-row"><h3>Maintenance Engineer</h3></div>
+            <div class="t-company">ALASHRAM HI ONE Textile Group — 10th of Ramadan, Egypt</div>
+            <ul>
+              <li>Control panel wiring and electrical installation for a new RAM textile production line</li>
+              <li>Troubleshot electrical faults and supported MCC inspection during line setup</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sec // Project files</span>
+        <h2>Projects</h2>
+      </div>
+
+      <div class="proj-grid reveal">
+
+        <div class="card proj-card">
+          <div class="proj-top"><h3>Green Riyadh Project</h3><span class="proj-year">2026</span></div>
+          <div class="proj-loc">KSA</div>
+          <p>P&amp;ID interpretation and I/O list / mapping list verification for RTU and SCADA integration.</p>
+          <div class="chip-row"><span class="chip">P&amp;ID</span><span class="chip">RTU</span><span class="chip">SCADA mapping</span></div>
+        </div>
+
+        <div class="card proj-card">
+          <div class="proj-top"><h3>Arabia For Cement</h3><span class="proj-year">2026</span></div>
+          <div class="proj-loc">Ain Sokhna, Egypt</div>
+          <p>Extension of the packing area, including mimic drawing in ECS SCADA and logic modification in Step7.</p>
+          <div class="chip-row"><span class="chip">ECS SCADA</span><span class="chip">Step7</span><span class="chip">Mimic design</span></div>
+        </div>
+
+        <div class="card proj-card">
+          <div class="proj-top"><h3>Pyrometals Industries</h3><span class="proj-year">2026</span></div>
+          <div class="proj-loc">KSA</div>
+          <p>Metal powder (slag grinding) process: PCS7 V10 DCS project creation, logic design, P&amp;ID/flowsheet reading, equipment &amp; instrument list review, and system architecture and topology design.</p>
+          <div class="chip-row"><span class="chip">PCS7 V10</span><span class="chip">DCS</span><span class="chip">Topology design</span></div>
+        </div>
+
+        <div class="card proj-card">
+          <div class="proj-top"><h3>Lemon &amp; Orange Squeezing Machines</h3><span class="proj-year">2026</span></div>
+          <div class="proj-loc">Egypt</div>
+          <p>ProfiNet troubleshooting, electrical panel wiring revision, PLC logic testing, sequence troubleshooting, and Allen-Bradley HMI modification.</p>
+          <div class="chip-row"><span class="chip">ProfiNet</span><span class="chip">Allen-Bradley</span><span class="chip">HMI</span></div>
+        </div>
+
+        <div class="card proj-card" style="grid-column: span 2;">
+          <div class="proj-top"><h3>Sinai Cement L1 Upgrade</h3><span class="proj-year">2024 – 2025</span></div>
+          <div class="proj-loc">Egypt</div>
+          <p>Mega-project upgrade of 9 PLCs across 3 phases — personally delivered 6, migrating from legacy Allen-Bradley to PCS7 V9.1 DCS: project creation, PLC programming, SCADA design, and commissioning of 3 S7-400 PLCs, FAT/SAT, I/O testing, P&amp;ID reading, and ProfiNet/Profibus/Modbus RTU interfacing. Delivered technical training sessions to maintenance engineers on troubleshooting.</p>
+          <div class="chip-row"><span class="chip">PCS7 V9.1</span><span class="chip">S7-400</span><span class="chip">FAT/SAT</span><span class="chip">Training delivery</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sec // Skill matrix</span>
+        <h2>Technical skills</h2>
+      </div>
+
+      <div class="skills-grid reveal">
+        <div class="card skill-card">
+          <h3>SCADA</h3>
+          <div class="chip-row"><span class="chip">Ignition V8.1 / 8.3</span><span class="chip">WinCC Explorer</span><span class="chip">ECS SCADA</span><span class="chip">Wonderware InduSoft v8.0</span><span class="chip">WinCC Unified</span></div>
+        </div>
+        <div class="card skill-card">
+          <h3>HMI</h3>
+          <div class="chip-row"><span class="chip">WinCC Comfort TP900</span><span class="chip">Vijeo Designer</span><span class="chip">DOPSoft</span><span class="chip">FactoryTalk View SE</span></div>
+        </div>
+        <div class="card skill-card">
+          <h3>PLC / DCS</h3>
+          <div class="chip-row"><span class="chip">TIA Portal</span><span class="chip">PCS7 (Ladder/SCL/STL/FBD/CFC)</span><span class="chip">Allen-Bradley RSLogix 5/500/5000</span></div>
+        </div>
+        <div class="card skill-card">
+          <h3>RTUs &amp; IEDs (SAS)</h3>
+          <div class="chip-row"><span class="chip">Easergy Builder</span><span class="chip">eSetup Easergy Pro</span><span class="chip">CET850</span><span class="chip">OMICRON IEDScout</span></div>
+        </div>
+        <div class="card skill-card">
+          <h3>Communication</h3>
+          <div class="chip-row"><span class="chip">ProfiNet (SINEC PNI)</span><span class="chip">Profibus</span><span class="chip">OPC UA</span><span class="chip">Modbus RTU</span><span class="chip">IEC 61850</span><span class="chip">IEC 104</span></div>
+        </div>
+        <div class="card skill-card">
+          <h3>Network</h3>
+          <div class="chip-row"><span class="chip">SINEC PNI</span><span class="chip">Wireshark</span><span class="chip">eCatcher</span><span class="chip">eBuddy</span></div>
+        </div>
+        <div class="card skill-card">
+          <h3>Motor control</h3>
+          <div class="chip-row"><span class="chip">VFD parameterization</span><span class="chip">Power monitor setup</span><span class="chip">Modbus RTU (RS-485)</span></div>
+        </div>
+        <div class="card skill-card">
+          <h3>IoT</h3>
+          <div class="chip-row"><span class="chip">Ewon router config</span><span class="chip">Node-RED (OPC UA / MQTT)</span></div>
+        </div>
+        <div class="card skill-card">
+          <h3>Database</h3>
+          <div class="chip-row"><span class="chip">Microsoft Office</span><span class="chip">MS SQL Server Studio</span><span class="chip">MySQL</span></div>
+        </div>
+        <div class="card skill-card">
+          <h3>Design</h3>
+          <div class="chip-row"><span class="chip">Classic control circuit design</span><span class="chip">AutoCAD Electrical</span><span class="chip">EPLAN fundamentals</span></div>
+        </div>
+        <div class="card skill-card">
+          <h3>Programming languages</h3>
+          <div class="chip-row"><span class="chip">C</span><span class="chip">Java</span><span class="chip">Python</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="courses">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sec // Certifications</span>
+        <h2>Technical courses</h2>
+      </div>
+
+      <div class="card reveal" style="padding:8px 0;">
+        <div class="table-scroll">
+          <table class="io-table">
+            <thead>
+              <tr><th>Course</th><th>Provider</th><th>Date</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-course">Substation Automation (SAS): IEC 61850 &amp; IEC 104 — Zero to Real Projects</td><td>Independent course</td><td class="col-date">06/2026</td></tr>
+              <tr><td class="col-course">SAS | Deep Dive and Roadmap</td><td>Eng. Hossam Embaby — Udemy</td><td class="col-date">05/2026</td></tr>
+              <tr><td class="col-course">Ignition 8.1 &amp; 8.3 SCADA Credential Course</td><td>Inductive University</td><td class="col-date">05/2025 – 04/2026</td></tr>
+              <tr><td class="col-course">ISA-88 PLC Programming Standard</td><td>Eng. Ahmed Saleh — Udemy</td><td class="col-date">08/2025</td></tr>
+              <tr><td class="col-course">Advanced Industrial Automation Diploma — SCADA design, advanced PLC, ProfiNet/Modbus RTU/Profibus</td><td>HA Consulting Group</td><td class="col-date">09/2023 – 11/2023</td></tr>
+              <tr><td class="col-course">Basic Industrial Automation Diploma — basic PLC, classic control, motor drives</td><td>HA Consulting Group</td><td class="col-date">08/2022 – 09/2022</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="education">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sec // Education record</span>
+        <h2>Education</h2>
+      </div>
+
+      <div class="card edu-card reveal">
+        <div class="edu-top">
+          <h3>Bachelor of Engineering — Electrical Power and Machines</h3>
+          <span class="edu-date">09/2019 — 07/2024</span>
+        </div>
+        <div class="edu-school">Zagazig University</div>
+        <div class="edu-meta">
+          <span class="pill">Cumulative grade: Very Good (77.54%)</span>
+        </div>
+        <div class="grad-project">
+          <span class="eyebrow" style="margin-bottom:6px;">Graduation project — Excellent (200/200)</span>
+          <p>Smart Operation of Induction Motor Drives fed from a PV Source, using PLC and IIoT.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="trainings">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sec // Field training</span>
+        <h2>Trainings &amp; internships</h2>
+      </div>
+      <div class="card reveal">
+        <ul class="simple-list">
+          <li><span class="li-title">IMHOSYS Company — Process Automation Internship</span><span class="li-date">07/2024 – 09/2024</span></li>
+          <li><span class="li-title">ArabTech for Electrical Industries</span><span class="li-date">08/2023 – 09/2023</span></li>
+          <li><span class="li-title">ABB — MyLearning-MyFuture 2023 Internship</span><span class="li-date">07/2023 – 08/2023</span></li>
+          <li><span class="li-title">Elsewedy Electric — The United Wires Branch</span><span class="li-date">08/2022 – 09/2022</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="beyond">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sec // Beyond the panel</span>
+        <h2>Extra-curricular &amp; non-technical</h2>
+      </div>
+      <div class="two-col reveal">
+        <div class="card">
+          <h3 style="font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px;">Extra-curricular activities</h3>
+          <ul class="simple-list">
+            <li><span class="li-title">Basic Industrial Automation Track Lead — IEEE Zagazig SB (PES)</span><span class="li-date">10/2023 – 04/2024</span></li>
+            <li><span class="li-title">Project Management Trainee — VEP</span><span class="li-date">07/2023 – 08/2023</span></li>
+            <li><span class="li-title">Technical Support Member — IEEE ZSB (PES)</span><span class="li-date">02/2023 – 10/2023</span></li>
+            <li><span class="li-title">Industrial Automation Member — IEEE ZSB (PES)</span><span class="li-date">02/2022 – 02/2023</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px;">Non-technical courses</h3>
+          <ul class="simple-list">
+            <li><span class="li-title">ALX Africa — AICE Program</span><span class="li-date">05/2024 – 07/2024</span></li>
+            <li><span class="li-title">PMI — Kickoff Program (Predictive Project Management)</span><span class="li-date">06/2024</span></li>
+            <li><span class="li-title">McKinsey Academy — Step Forward Program</span><span class="li-date">10/2023 – 04/2024</span></li>
+            <li><span class="li-title">Aspire Training Solutions — Employability Skills</span><span class="li-date">07/2022 – 08/2022</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="languages" style="border-bottom:none;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sec // Languages &amp; soft skills</span>
+        <h2>Languages &amp; soft skills</h2>
+      </div>
+      <div class="reveal" style="display:grid; gap:24px;">
+        <div>
+          <div class="pill-row">
+            <span class="pill lang">Arabic <span>Native</span></span>
+            <span class="pill lang">English <span>B2 — Upper Intermediate</span></span>
+            <span class="pill lang">German <span>A1 — Beginner</span></span>
+          </div>
+        </div>
+        <div class="pill-row">
+          <span class="pill">Adaptability</span><span class="pill">Teamwork</span><span class="pill">Attention to Detail</span>
+          <span class="pill">Time Management</span><span class="pill">Problem Solving</span><span class="pill">Communication</span>
+          <span class="pill">Leadership</span><span class="pill">Negotiation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact" style="border-bottom:none;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sec // Contact channel</span>
+        <h2>Let's talk automation</h2>
+        <p>Open to discussing controls, PLC/DCS, SCADA and field service work. Reach out directly or connect on LinkedIn.</p>
+      </div>
+
+      <div class="contact-grid reveal">
+        <div class="card">
+          <ul class="contact-list">
+            <li><span class="c-label">Email</span><a class="c-value" href="mailto:adham.amgad0710@gmail.com">adham.amgad0710@gmail.com</a></li>
+            <li><span class="c-label">Phone</span><span class="c-value"><a href="tel:+201210104535">012 1010 4535</a> &nbsp;/&nbsp; <a href="tel:+201553339144">015 5333 9144</a></span></li>
+            <li><span class="c-label">Location</span><span class="c-value">Gesr Elsuez, Cairo, Egypt</span></li>
+            <li><span class="c-label">LinkedIn</span><a class="c-value" href="https://www.linkedin.com/in/adham-amgad1/" target="_blank" rel="noopener">linkedin.com/in/adham-amgad1</a></li>
+          </ul>
+        </div>
+        <div class="card" style="display:flex; flex-direction:column; justify-content:center; gap:14px;">
+          <a class="btn btn-primary" style="justify-content:center;" href="mailto:adham.amgad0710@gmail.com">Send an email</a>
+          <a class="btn btn-outline" style="justify-content:center;" href="Adham_Amgad_CV_6_2026.pdf" download>Download CV (PDF)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; <span id="year">2026</span> Adham Amgad — Controls &amp; Industrial Automation Engineer</p>
+    <p>Built with HTML, CSS &amp; JS — hosted on GitHub Pages</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var revealEls = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in-view'); });
+  }
+
+  var sections = document.querySelectorAll('main section[id], header.hero');
+  var navLinks = document.querySelectorAll('.nav-links a');
+  if (sections.length && navLinks.length) {
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          var id = entry.target.getAttribute('id');
+          navLinks.forEach(function(a){
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function(s){ if (s.id) spy.observe(s); });
+  }
+</script>
+
+</body>
+</html>
