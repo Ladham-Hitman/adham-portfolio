@@ -448,7 +448,12 @@
   .video-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; }
   .video-card{ display:flex; flex-direction:column; }
   .video-thumb{
-    position:relative; width:100%; padding-top:56.25%;
+    
+    position:relative;
+    width:100%;
+    aspect-ratio:16/10;   /* or 4/3 */
+    padding-top:0;
+    overflow:hidden;
     background:var(--panel-2); border-radius:var(--r-md) var(--r-md) 0 0;
     overflow:hidden; border:1px solid var(--line); border-bottom:none;
   }
